@@ -5,27 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BattleShip_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="550">
+        FontSize="24"
+        Title="Морской бой" Height="524" Width="555">
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"
-                    HorizontalAlignment="Center">
-            <StackPanel.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Width" Value="40"/>
-                    <Setter Property="Height" Value="40"/>
-                    <Setter Property="Margin" Value="5"/>
-                </Style>
-            </StackPanel.Resources>
-            <Button Content="0" Click="Button_Click" />
-            <Button Content="1" Click="Button_Click"/>
-            <Button Content="2" Click="Button_Click"/>
-            <Button Content="3" Click="Button_Click"/>
-            <Button Content="4" Click="Button_Click"/>
-            <Button Content="5" Click="Button_Click"/>
-            <Button Content="6" Click="Button_Click"/>
-            <Button Content="7" Click="Button_Click"/>
-            <Button Content="8" Click="Button_Click" />
-            <Button Content="9" Click="Button_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="20">
+            <TextBlock Text="{Binding Time}" FontSize="36" HorizontalAlignment="Center"
+                       Margin="0,0,0,10"/>
+            <TextBlock Text="{Binding Steps}"/>
+            <TextBlock Text="{Binding Aim}" />
         </StackPanel>
+        <Button Content="Start" Grid.Column="1" Click="btn_Start"/>
+        <Button Content="Stop" Grid.Column="2" Click="btn_Stop"/>
     </Grid>
 </Window>
