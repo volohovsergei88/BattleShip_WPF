@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:BattleShip_WPF"
         mc:Ignorable="d"
         FontSize="24"
-        Title="Морской бой" Height="524" Width="555">
+        Title="Морской бой" Height="450" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="20">
             <TextBlock Text="{Binding Time}" FontSize="36" HorizontalAlignment="Center"
@@ -19,7 +19,51 @@
             <TextBlock Text="{Binding Steps}"/>
             <TextBlock Text="{Binding Aim}" />
         </StackPanel>
-        <Button Content="Start" Grid.Column="1" Click="btn_Start"/>
-        <Button Content="Stop" Grid.Column="2" Click="btn_Stop"/>
+        <ItemsControl Grid.Column="1"
+                      ItemsSource="{Binding OurMap}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#400F" BorderThickness="1"
+                                        Width="30" Height="30" Margin="0,0,-1,-1">
+                                 </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                     </DataTemplate>
+            </ItemsControl.ItemTemplate> 
+        </ItemsControl>
+        <ItemsControl Grid.Column="2"
+                      ItemsSource="{Binding EnemyMap}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#400F" BorderThickness="1"
+                                        Width="30" Height="30" Margin="0,0,-1,-1">
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>
